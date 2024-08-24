@@ -1,0 +1,43 @@
+﻿@using Attendance_System.ViewModels
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+
+@model RegisterModel
+
+<form method="post">
+    <div class="mb-3">
+        <label asp-for="UserName" class="form-label">UserName</label>
+        <input type="text" class="form-control" asp-for="UserName">
+        <span asp-validation-for="UserName" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Email" class="form-label">Email</label>
+        <input type="text" class="form-control" asp-for="Email">
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Password" class="form-label">Password</label>
+        <input type="password" class="form-control" asp-for="Password">
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+
+    @*  <div class="mb-3">
+    <label asp-for="Role" class="form-label">Role</label>
+    <input type="text" class="form-control" asp-for="Role">
+    <span asp-validation-for="Role" class="text-danger"></span>
+    </div> *@
+
+    <div class="mb-3">
+        <label asp-for="DepartmentID" class="form-label">DepartmentID</label>
+        <input type="text" class="form-control" asp-for="DepartmentID">
+        <span asp-validation-for="DepartmentID" class="text-danger"></span>
+    </div>
+    <input type="submit" value="Register" />
+</form>

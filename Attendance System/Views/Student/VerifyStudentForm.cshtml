@@ -1,0 +1,37 @@
+﻿@model User
+
+<h1>Verify Student</h1>
+
+<form action="VerifyStudent">
+    <div class="mb-3">
+        <label asp-for="ID" class="form-label">ID</label>
+        <input type="text" class="form-control" asp-for="ID" value="@Model.ID" disabled>
+        @* <input type="text" name="ID"/> *@
+    </div>
+
+   @*  <div class="mb-3">
+        <label asp-for="Name" class="form-label">Name</label>
+        <input type="text" class="form-control" asp-for="Name" value="@Model.Name" disabled>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Email" class="form-label">Email</label>
+        <input type="text" class="form-control" asp-for="Email" value="@Model.Email" disabled>
+    </div> *@
+    @* <a asp-controller="Student" asp-action="VerifyStudent" asp-route-id="@Model.ID">VVerify</a> *@
+    @* <div class="mb-3">
+        <label asp-for="DepartmentID" class="form-label">Department ID</label>
+        <input type="text" class="form-control" asp-for="DepartmentID" value="@Model.DepartmentID" disabled>
+    </div> *@
+
+    <input type="submit" value="Verify" class="btn btn-primary"/>
+
+    <a asp-controller="Student" asp-action="VerifyStudent" asp-route-id="@Model.ID" class="btn btn-danger">Verify</a>
+</form>
+@* 
+<div class="mb-3">
+    <label asp-for="Department.Name" class="form-label">Department</label>
+    <input type="text" class="form-control" asp-for="Department.Name" value="@Model.Department.Name" disabled>
+</div> *@
+
+@* <a asp-controller="Student" asp-action="VerifyStudent" asp-route-id="@Model.ID" class="btn btn-primary">Verify</a> *@
