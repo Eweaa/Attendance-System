@@ -9,5 +9,6 @@ namespace Attendance_System.Interfaces
         User GetById(int id);
         void VerifyStudent(int id);
         void ReadExcel(string path);
+        int AttendanceReport(int id, DateOnly start, DateOnly End);
     }
 }

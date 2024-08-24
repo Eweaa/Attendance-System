@@ -1,8 +1,6 @@
 ﻿using Attendance_System.Context;
 using Attendance_System.Interfaces;
 using Attendance_System.Models;
-using ExcelDataReader;
-using Microsoft.EntityFrameworkCore;
 using OfficeOpenXml;
 using System.Security.Cryptography;
 using System.Text;
@@ -93,6 +91,38 @@ namespace Attendance_System.Repositories
 
                 return builder.ToString();
             }
+        }
+
+        public int AttendanceReport(int id, DateOnly start, DateOnly End)
+        {
+            var res = db.Attendances.Where(a => a.UserID == 2 && a.Attended == false);
+
+            List<DateOnly> FinalRes = new List<DateOnly>();
+
+            foreach (var a in res) 
+            {
+                if(a.Date > start && a.Date < End)
+                {
+                    FinalRes.Add(a.Date);
+                }
+            }
+
+            return FinalRes.Count;
+
+
+            //List<DateOnly> dates = new List<DateOnly>();
+            //DateOnly CurrentDate = start;
+
+            //while (CurrentDate <= End)
+            //{
+            //    dates.Add(CurrentDate);
+            //    CurrentDate = CurrentDate.AddDays(1);
+            //}
+
+            //foreach (DateOnly date in dates)
+            //{
+            //    Console.WriteLine(date.ToString());
+            //}
         }
     }
 }

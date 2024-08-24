@@ -19,8 +19,11 @@
 
 <div>
     <form action="/Student/ImportExcel" method="post" enctype="multipart/form-data">
-        <input type="file" name="ExcelFile" />
-        <input type="submit" class="btn btn-primary" />
+        <fieldset>
+            <legend>Add Data From Excel</legend>
+            <input type="file" name="ExcelFile" />
+            <input type="submit" class="btn btn-primary" />
+        </fieldset>
     </form>
     @* <a asp-controller="Student" asp-action="ImportExcel">Import</a> *@
 </div>

@@ -57,5 +57,26 @@ namespace Attendance_System.Controllers
             student.VerifyStudent(id);
             return RedirectToAction("VerifiedStudents");
         }
+
+        public IActionResult AttendanceReportForm()
+        {
+            var res = student.GetById(2);
+            //DateOnly Start = new(2024, 08, 01);
+            //DateOnly End = new(2024, 08, 24);
+            //int Days = student.AttendanceReport(1, Start, End);
+            //return Content($"This student was absent for {Days} Days");
+            return View(res);
+        }
+
+        //[HttpPost]
+        public IActionResult AttendanceReport(int Id, DateOnly Start, DateOnly End)
+        {
+            //DateOnly Start = new(2024, 08, 01);
+            //DateOnly End = new(2024, 08, 24);
+            var std = student.GetById(Id);
+            var days = student.AttendanceReport(2, Start, End);
+            ViewBag.Days = days;
+            return View(std);
+        }
     }
 }

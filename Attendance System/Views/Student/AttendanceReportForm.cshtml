@@ -1,0 +1,26 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model User
+
+<form action="AttendanceReport" method="post">
+
+    <input name="id" value="@Model.ID" hidden/>
+
+    <div style="display: flex; justify-content: space-around">
+        <fieldset class="border rounded p-4" style="display: inline-block;">
+            <legend>Start</legend>
+            <input type="date" name="start"/>
+        </fieldset>
+
+        <fieldset class="border rounded p-4" style="display: inline-block">
+            <legend>End</legend>
+            <input type="date" name="end"/>
+        </fieldset>
+    </div>
+
+    <input type="submit" value="Submit" />
+</form>
