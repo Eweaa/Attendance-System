@@ -10,5 +10,6 @@ namespace Attendance_System.Interfaces
         void VerifyStudent(int id);
         void ReadExcel(string path);
         int AttendanceReport(int id, DateOnly start, DateOnly End);
+        void CreatePDF(int id);
     }
 }

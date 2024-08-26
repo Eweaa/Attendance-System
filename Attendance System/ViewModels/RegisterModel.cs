@@ -9,6 +9,7 @@ namespace Attendance_System.ViewModels
         [Required, DataType(DataType.Password)]
         public string Password { get; set; }
         public string Email { get; set; }
+        public string? ImgPath { get; set; }
         public int? DepartmentID { get; set; }
     }
 }

@@ -29,10 +29,10 @@ namespace Attendance_System.Controllers
         public async Task<IActionResult> Login(LoginViewModel login)
         {
             var Authenticated = user.Login(login.UserName, login.Password);
-            var User = user.GetByName(login.UserName);
 
             if (Authenticated)
             {
+                var User = user.GetByName(login.UserName);
                 Claim C1 = new Claim(ClaimTypes.Name, login.UserName);
                 Claim C2 = new Claim(ClaimTypes.Email, User.Email);
                 Claim C3 = new Claim(ClaimTypes.Role, User.Role);
@@ -62,8 +62,22 @@ namespace Attendance_System.Controllers
         }
 
         [HttpPost]
-        public IActionResult RegisterStudent(RegisterModel model)
+        public async Task<IActionResult> RegisterStudent(RegisterModel model, IFormFile? photo)
         {
+
+            if (photo != null)
+            {
+                Guid guid = Guid.NewGuid();
+                string FileExtension = photo.FileName.Split('.').Last();
+                string FilePath = $"wwwroot/Images/{guid}.{FileExtension}";
+                using (FileStream st = new FileStream(FilePath, FileMode.Create))
+                {
+                    await photo.CopyToAsync(st);
+                }
+
+                model.ImgPath = $"{guid}.{FileExtension}";
+            }
+
             user.RegisterStudent(model);
             return View();
         }

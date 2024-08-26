@@ -4,6 +4,7 @@ using Attendance_System.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Attendance_System.Migrations
 {
     [DbContext(typeof(ITIContext))]
-    partial class ITIContextModelSnapshot : ModelSnapshot
+    [Migration("20240825214415_m3")]
+    partial class m3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -76,7 +79,7 @@ namespace Attendance_System.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("ProgramID")
+                    b.Property<int?>("ProgramID")
                         .HasColumnType("int");
 
                     b.HasKey("ID");
@@ -116,9 +119,6 @@ namespace Attendance_System.Migrations
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ImgPath")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("IntakeID")
@@ -165,13 +165,9 @@ namespace Attendance_System.Migrations
 
             modelBuilder.Entity("Attendance_System.Models.Intake", b =>
                 {
-                    b.HasOne("Attendance_System.Models.Program", "Program")
+                    b.HasOne("Attendance_System.Models.Program", null)
                         .WithMany("Intakes")
-                        .HasForeignKey("ProgramID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Program");
+                        .HasForeignKey("ProgramID");
                 });
 
             modelBuilder.Entity("Attendance_System.Models.User", b =>

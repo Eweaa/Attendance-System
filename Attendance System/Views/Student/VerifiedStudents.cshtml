@@ -19,7 +19,7 @@
             </th>
             <th></th>
         </tr>
-    </thead>
+    </thead>    
     <tbody>
         @foreach (var item in Model)
         {
@@ -28,9 +28,9 @@
                     @Html.DisplayFor(modelItem => item.Name)
                 </td>
                 <td>
-                    <a asp-action="AttendanceReportForm" >Attendance Report</a> |
-                    <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                    <a asp-action="AttendanceReportForm" >Attendance Report</a> | 
+                    <a asp-controller="Student" asp-action="CreatePDF" asp-route-id="@item.ID" class="btn btn-danger">Verify</a>
+
                 </td>
             </tr>
         }

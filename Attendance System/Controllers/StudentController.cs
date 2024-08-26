@@ -78,5 +78,11 @@ namespace Attendance_System.Controllers
             ViewBag.Days = days;
             return View(std);
         }
+
+        public IActionResult CreatePdf(int id)
+        {
+            student.CreatePDF(id);
+            return RedirectToAction("Index");
+        }
     }
 }
